@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{B80B98A7-4294-10A1-2B98-B48D20DCAC7A}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "XGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
