@@ -39,4 +39,6 @@ public:
 	UObject* TestObject = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", DisplayName = "配置类")
 	TSubclassOf<UObject> TestClass = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", DisplayName = "Actor")
+	AActor* TestActor = nullptr;
 };
