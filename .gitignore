@@ -32,6 +32,7 @@
 *.app
 
 .vs
+.idea
 Binaries
 DerivedDataCache
 Intermediate

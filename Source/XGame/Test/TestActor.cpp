@@ -19,15 +19,15 @@ void ATestActor::BeginPlay()
 	if (TestObject)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[Test] TestObject is valid"));
-		if (FProperty* ObjProperty = TestObject->GetClass()->FindPropertyByName(FName("ObjectConfig")))
+		if (const FProperty* ObjProperty = TestObject->GetClass()->FindPropertyByName(FName("ObjectConfig")))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ObjProperty is valid"));
-			if (FTestConfig* ObjConfig = ObjProperty->ContainerPtrToValuePtr<FTestConfig>(TestObject))
+			if (const FTestConfig* ObjConfig = ObjProperty->ContainerPtrToValuePtr<FTestConfig>(TestObject))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] ObjConfig is valid: Start = %f,  Location = %s"), ObjConfig->Start, *ObjConfig->Location.ToString());
 			}
 		}
-		if (FFloatProperty* ObjFloat = Cast<FFloatProperty>(TestObject->GetClass()->FindPropertyByName(FName("TestFloat"))))
+		if (const FFloatProperty* ObjFloat = Cast<FFloatProperty>(TestObject->GetClass()->FindPropertyByName(FName("TestFloat"))))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ObjFloat is valid: Float = %f"), ObjFloat->GetPropertyValue_InContainer(TestObject));
 
@@ -36,10 +36,10 @@ void ATestActor::BeginPlay()
 	if (TestClass)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[Test] TestClass is valid"));
-		if (FProperty* ClassProperty = TestClass->FindPropertyByName(FName("ObjectConfig")))
+		if (const FProperty* ClassProperty = TestClass->FindPropertyByName(FName("ObjectConfig")))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ClassProperty is valid"));
-			if (FTestConfig* ClassConfig = ClassProperty->ContainerPtrToValuePtr<FTestConfig>(TestClass->GetDefaultObject()))
+			if (const FTestConfig* ClassConfig = ClassProperty->ContainerPtrToValuePtr<FTestConfig>(TestClass->GetDefaultObject()))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] ClassConfig is valid: Start = %f,  Location = %s"), ClassConfig->Start, *ClassConfig->Location.ToString());
 			}
@@ -47,11 +47,11 @@ void ATestActor::BeginPlay()
 		if (FProperty* ClassFloat = TestClass->FindPropertyByName(FName("TestFloat")))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ClassFloat is valid"));
-			if (double* FloatConfig = ClassFloat->ContainerPtrToValuePtr<double>(TestClass->GetDefaultObject()))
+			if (const double* FloatConfig = ClassFloat->ContainerPtrToValuePtr<double>(TestClass->GetDefaultObject()))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] FloatConfig is valid: Float = %f"), *FloatConfig);
 			}
-			if (FDoubleProperty* FlotPtr = Cast<FDoubleProperty>(ClassFloat))
+			if (const FDoubleProperty* FlotPtr = Cast<FDoubleProperty>(ClassFloat))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] FlotPtr is valid: Float = %f"), FlotPtr->GetPropertyValue_InContainer(TestClass->GetDefaultObject()));
 
