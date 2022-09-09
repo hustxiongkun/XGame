@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -17,28 +15,25 @@ struct FTestConfig
 	FVector Location = FVector::ZeroVector;
 };
 
-
 UCLASS()
 class XGAME_API ATestActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
+public:
+	/**
+	 * @brief 构造函数
+	 */
 	ATestActor();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", DisplayName = "配置")
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "配置"))
 	UObject* TestObject = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", DisplayName = "配置类")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "配置类"))
 	TSubclassOf<UObject> TestClass = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", DisplayName = "Actor")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "测试"))
 	AActor* TestActor = nullptr;
 };
