@@ -36,4 +36,6 @@ private:
 	TSubclassOf<UObject> TestClass = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "测试"))
 	AActor* TestActor = nullptr;
+	UPROPERTY(EditAnywhere, Category = "Config", meta = (TitleProperty = "{Start} and {Location}"))
+	TArray<FTestConfig> ConfigMappings;
 };
