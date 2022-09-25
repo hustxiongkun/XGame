@@ -26,6 +26,9 @@ public:
 	 */
 	ATestActor();
 
+	UFUNCTION(NetMulticast, Reliable, Category = "Test")
+	void TestMulticast();
+
 protected:
 	virtual void BeginPlay() override;
 

@@ -5,6 +5,11 @@ ATestActor::ATestActor()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
+void ATestActor::TestMulticast_Implementation()
+{
+	UE_LOG(LogTemp, Log, TEXT("[Test] TestMulticast"));
+}
+
 void ATestActor::BeginPlay()
 {
 	Super::BeginPlay();
