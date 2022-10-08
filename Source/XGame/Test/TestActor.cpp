@@ -10,6 +10,11 @@ void ATestActor::TestMulticast_Implementation()
 	UE_LOG(LogTemp, Log, TEXT("[Test] TestMulticast"));
 }
 
+void ATestActor::TestBlueprintCallable()
+{
+	UE_LOG(LogTemp, Log, TEXT("[Test] ATestActor::TestBlueprintCallable"));
+}
+
 void ATestActor::BeginPlay()
 {
 	Super::BeginPlay();

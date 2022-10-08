@@ -29,6 +29,9 @@ public:
 	UFUNCTION(NetMulticast, Reliable, Category = "Test")
 	void TestMulticast();
 
+	UFUNCTION()
+	virtual void TestBlueprintCallable();
+
 protected:
 	virtual void BeginPlay() override;
 
