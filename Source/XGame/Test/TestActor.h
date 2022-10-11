@@ -15,6 +15,13 @@ struct FTestConfig
 	FVector Location = FVector::ZeroVector;
 };
 
+UENUM(BlueprintType)
+enum class EMode: uint8
+{
+	Mode2D,
+	Mode3D
+};
+
 UCLASS()
 class XGAME_API ATestActor : public AActor
 {
@@ -31,6 +38,21 @@ public:
 
 	UFUNCTION()
 	virtual void TestBlueprintCallable();
+
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(InlineEditConditionToggle))
+	bool TestBool;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(EditCondition = "TestBool"))
+	int32 TestInt;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(EditCondition = "TestBool"))
+	float TestFloat;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(EditCondition = "TestBool", HideEditConditionToggle))
+	FVector TestVector;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition2", meta=(InlineCategoryProperty))
+	EMode Mode;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition2", meta=(EditCondition = "Mode == EMode::Mode2D", EditConditionHides))
+	FVector2D TestVector2D;
+	UPROPERTY(EditAnywhere, Category = "TestEditCondition2", meta=(EditCondition = "Mode == EMode::Mode3D", EditConditionHides))
+	FVector TestVector3D;
 
 protected:
 	virtual void BeginPlay() override;
