@@ -1,5 +1,14 @@
 #include "TestActor.h"
 
+#include "AIController.h"
+#include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/GameMode.h"
+#include "GameFramework/GameState.h"
+#include "GameFramework/HUD.h"
+#include "GameFramework/PlayerState.h"
+
 ATestActor::ATestActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -13,6 +22,12 @@ void ATestActor::TestMulticast_Implementation()
 void ATestActor::TestBlueprintCallable()
 {
 	UE_LOG(LogTemp, Log, TEXT("[Test] ATestActor::TestBlueprintCallable"));
+	UE_LOG(LogTemp, Log, TEXT("[Test] UObject = %d, AActor = %d, UActorComponent = %d"), sizeof(UObject), sizeof(AActor), sizeof(UActorComponent));
+	UE_LOG(LogTemp, Log, TEXT("[Test] AGameModeBase = %d, AGameMode = %d, AGameState = %d, APlayerState = %d"), sizeof(AGameModeBase), sizeof(AGameMode), sizeof(AGameState), sizeof(APlayerState));
+	UE_LOG(LogTemp, Log, TEXT("[Test] APawn = %d, ACharacter = %d"), sizeof(APawn), sizeof(ACharacter));
+	UE_LOG(LogTemp, Log, TEXT("[Test] AController = %d, APlayerController = %d, AAIController = %d"), sizeof(AController), sizeof(APlayerController), sizeof(AAIController));
+	UE_LOG(LogTemp, Log, TEXT("[Test] APlayerCameraManager = %d, ACameraActor = %d, UCameraComponent = %d"), sizeof(APlayerCameraManager), sizeof(ACameraActor), sizeof(UCameraComponent));
+	UE_LOG(LogTemp, Log, TEXT("[Test] AHUD = %d"), sizeof(AHUD));
 }
 
 void ATestActor::BeginPlay()

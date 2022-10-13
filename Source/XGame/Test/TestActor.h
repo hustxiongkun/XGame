@@ -33,10 +33,10 @@ public:
 	 */
 	ATestActor();
 
-	UFUNCTION(NetMulticast, Reliable, Category = "Test")
+	UFUNCTION(BlueprintCallable, NetMulticast, Reliable, Category = "Test")
 	void TestMulticast();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void TestBlueprintCallable();
 
 	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(InlineEditConditionToggle))
