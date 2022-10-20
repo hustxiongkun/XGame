@@ -39,6 +39,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void TestBlueprintCallable();
 
+	UFUNCTION(BlueprintCallable)
+	void TestComponent();
+
 	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(InlineEditConditionToggle))
 	bool TestBool;
 	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(EditCondition = "TestBool"))

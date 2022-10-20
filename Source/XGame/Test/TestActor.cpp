@@ -30,9 +30,28 @@ void ATestActor::TestBlueprintCallable()
 	UE_LOG(LogTemp, Log, TEXT("[Test] AHUD = %d"), sizeof(AHUD));
 }
 
+void ATestActor::TestComponent()
+{
+	// 测试Actor的component
+	for(const auto Component : GetComponents())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[Test] ATestActor::BeginPlay: Owned Component = %s"), *Component->GetName());
+	}
+	for(const auto Component : GetInstanceComponents())
+	{
+		UE_LOG(LogTemp, Log, TEXT("[Test] ATestActor::BeginPlay: Instance Component = %s"), *Component->GetName());
+	}
+	for(const auto Component : BlueprintCreatedComponents)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[Test] ATestActor::BeginPlay: Blueprint Component = %s"), *Component->GetName());
+	}
+}
+
 void ATestActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	TestComponent();
 
 	if (TestObject)
 	{
