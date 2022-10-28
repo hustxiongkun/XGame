@@ -28,6 +28,26 @@ void ATestActor::TestBlueprintCallable()
 	UE_LOG(LogTemp, Log, TEXT("[Test] AController = %d, APlayerController = %d, AAIController = %d"), sizeof(AController), sizeof(APlayerController), sizeof(AAIController));
 	UE_LOG(LogTemp, Log, TEXT("[Test] APlayerCameraManager = %d, ACameraActor = %d, UCameraComponent = %d"), sizeof(APlayerCameraManager), sizeof(ACameraActor), sizeof(UCameraComponent));
 	UE_LOG(LogTemp, Log, TEXT("[Test] AHUD = %d"), sizeof(AHUD));
+	if(BlueprintClass)
+	{
+		FPackageId PackageId = FPackageId::FromName(FName(BlueprintClass->GetFullName()));
+		UE_LOG(LogTemp, Log, TEXT("[Test] Blueprint Package = %s,  BlueprintClass = %s, PackageId = %llu, size = %d"), *GetPackage()->GetLoadedPath().GetPackageFName().ToString(), *BlueprintClass->GetFullName(), PackageId.Value(), sizeof(FPackageId));
+		if(const UObject* OtherObj = NewObject<ATestActor>(this, BlueprintClass, TEXT("OterObj")))
+		{
+			PackageId = FPackageId::FromName(FName(OtherObj->GetFullName()));
+			UE_LOG(LogTemp, Log, TEXT("[Test] Blueprint OtherObj = %s, PackageId = %llu"), *OtherObj->GetFullName(), PackageId.Value());
+			if(const UClass* OtherClass = OtherObj->GetClass())
+			{
+				PackageId = FPackageId::FromName(FName(OtherClass->GetFullName()));
+				UE_LOG(LogTemp, Log, TEXT("[Test] Blueprint OtherClass = %s, PackageId = %llu"), *OtherClass->GetFullName(), PackageId.Value());
+			}
+		}
+	}
+	if(const UClass* BlueprintPtrClass = BlueprintPtr.LoadSynchronous())
+	{
+		const FPackageId PackageId = FPackageId::FromName(FName(BlueprintPtrClass->GetFullName()));
+		UE_LOG(LogTemp, Log, TEXT("[Test] Blueprint BlueprintPtrClass = %s, PackageId = %llu"), *BlueprintPtrClass->GetFullName(), PackageId.Value());
+	}
 }
 
 void ATestActor::TestComponent()

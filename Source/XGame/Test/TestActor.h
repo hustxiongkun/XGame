@@ -69,4 +69,8 @@ private:
 	AActor* TestActor = nullptr;
 	UPROPERTY(EditAnywhere, Category = "Config", meta = (TitleProperty = "{Start} and {Location}"))
 	TArray<FTestConfig> ConfigMappings;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "蓝图类"))
+	TSubclassOf<ATestActor> BlueprintClass = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "蓝图类指针"))
+	TSoftClassPtr<ATestActor> BlueprintPtr = nullptr;
 };
