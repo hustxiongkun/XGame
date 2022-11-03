@@ -73,6 +73,8 @@ void ATestActor::BeginPlay()
 
 	TestComponent();
 
+	UE_LOG(LogTemp, Log, TEXT("[Test] GUID = %u"), GetUniqueID());
+
 	if (TestObject)
 	{
 		UE_LOG(LogTemp, Log, TEXT("[Test] TestObject is valid"));
