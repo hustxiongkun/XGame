@@ -73,4 +73,15 @@ private:
 	TSubclassOf<ATestActor> BlueprintClass = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "蓝图类指针"))
 	TSoftClassPtr<ATestActor> BlueprintPtr = nullptr;
+
+	// 测试智能指针
+	UPROPERTY()
+	AActor* Test1;
+	TWeakObjectPtr<AActor> Test2;
+	UPROPERTY()
+	AActor* Test3;
+	AActor* Test4;
+	TObjectPtr<AActor> Test5;
+	UPROPERTY()
+	TObjectPtr<AActor> Test6;
 };

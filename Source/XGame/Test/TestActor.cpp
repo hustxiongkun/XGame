@@ -121,4 +121,121 @@ void ATestActor::BeginPlay()
 			}
 		}
 	}
+
+	// 测试智能指针
+	if(UWorld* World = GetWorld(); IsValid(World))
+	{
+		Test1 = World->SpawnActor<AActor>();
+		Test2 = World->SpawnActor<AActor>();
+		Test3 = World->SpawnActor<AActor>();
+		Test4 = World->SpawnActor<AActor>();
+		Test5 = World->SpawnActor<AActor>();
+		Test6 = World->SpawnActor<AActor>();
+
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, [this]()
+		{
+			Test1->Destroy();
+			Test2->Destroy();
+			Test3->Destroy();
+			Test3 = nullptr;
+			Test4->Destroy();
+			Test5->Destroy();
+			Test6->Destroy();
+		}, 5.0f, false);
+
+		FTimerHandle TimerHandle2;
+		GetWorldTimerManager().SetTimer(TimerHandle2, [this]()
+		{
+			if(Test1)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test1 指针存在"));
+				if(Test1->IsPendingKillPending() || Test1->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test1 指针存在但已被销毁或无法访问"));
+				}
+				if(IsValid(Test1))
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test1 IsValid"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test1 指针不存在"));
+			}
+			
+			if(Test2.IsValid())
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test2 指针存在"));
+				if(Test2->IsPendingKillPending() || Test2->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test2 指针存在但已被销毁或无法访问"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test2 指针不存在"));
+			}
+			
+			if(Test3)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test3 指针存在"));
+				if(Test3->IsPendingKillPending() || Test3->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test3 指针存在但已被销毁或无法访问"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test3 指针不存在"));
+			}
+			
+			if(Test4)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test4 指针存在"));
+				if(Test4->IsPendingKillPending() || Test4->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test4 指针存在但已被销毁或无法访问"));
+				}
+				if(IsValid(Test4))
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test4 IsValid"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test4 指针不存在"));
+			}
+			
+			if(Test5.Get())
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test5 指针存在"));
+				if(Test5->IsPendingKillPending() || Test5->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test5 指针存在但已被销毁或无法访问"));
+				}
+				if(IsValid(Test5))
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test5 IsValid"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test5 指针不存在"));
+			}
+			
+			if(Test6)
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test6 指针存在"));
+				if(Test6->IsPendingKillPending() || Test6->IsUnreachable())
+				{
+					UE_LOG(LogTemp, Log, TEXT("[Test] Test6 指针存在但已被销毁或无法访问"));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Log, TEXT("[Test] Test6 指针不存在"));
+			}
+		}, 2.0f, true, 10.0f);
+	}
 }
