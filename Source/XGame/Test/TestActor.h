@@ -80,6 +80,7 @@ private:
 	TWeakObjectPtr<AActor> Test2;
 	UPROPERTY()
 	AActor* Test3;
+	// ReSharper disable once CppUE4ProbableMemoryIssuesWithUObject
 	AActor* Test4;
 	TObjectPtr<AActor> Test5;
 	UPROPERTY()
