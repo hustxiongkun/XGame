@@ -9,10 +9,12 @@ struct FTestConfig
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test", DisplayName = "开始")
+#if WITH_EDITORONLY_DATA
+	UPROPERTY(EditAnywhere, Category = "Test", DisplayName = "开始")
 	float Start = 1.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test", DisplayName = "位置")
+	UPROPERTY(EditAnywhere, Category = "Test", DisplayName = "位置")
 	FVector Location = FVector::ZeroVector;
+#endif
 };
 
 UENUM(BlueprintType)
@@ -63,14 +65,21 @@ protected:
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "配置"))
 	UObject* TestObject = nullptr;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "配置类"))
 	TSubclassOf<UObject> TestClass = nullptr;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "测试"))
 	AActor* TestActor = nullptr;
+
+#if WITH_EDITORONLY_DATA
 	UPROPERTY(EditAnywhere, Category = "Config", meta = (TitleProperty = "{Start} and {Location}"))
 	TArray<FTestConfig> ConfigMappings;
+#endif
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "蓝图类"))
 	TSubclassOf<ATestActor> BlueprintClass = nullptr;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Config", meta = (AllowPrivateAccess, DisplayName = "蓝图类指针"))
 	TSoftClassPtr<ATestActor> BlueprintPtr = nullptr;
 

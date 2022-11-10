@@ -81,11 +81,13 @@ void ATestActor::BeginPlay()
 		if (const FProperty* ObjProperty = TestObject->GetClass()->FindPropertyByName(FName("ObjectConfig")))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ObjProperty is valid"));
+#if WITH_EDITORONLY_DATA
 			if (const FTestConfig* ObjConfig = ObjProperty->ContainerPtrToValuePtr<FTestConfig>(TestObject))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] ObjConfig is valid: Start = %f,  Location = %s"), ObjConfig->Start,
 				       *ObjConfig->Location.ToString());
 			}
+#endif
 		}
 		if (const FDoubleProperty* ObjFloat = CastField<FDoubleProperty>(
 			TestObject->GetClass()->FindPropertyByName(FName("TestFloat"))))
@@ -100,12 +102,14 @@ void ATestActor::BeginPlay()
 		if (const FProperty* ClassProperty = TestClass->FindPropertyByName(FName("ObjectConfig")))
 		{
 			UE_LOG(LogTemp, Log, TEXT("[Test] ClassProperty is valid"));
+#if WITH_EDITORONLY_DATA
 			if (const FTestConfig* ClassConfig = ClassProperty->ContainerPtrToValuePtr<FTestConfig>(
 				TestClass->GetDefaultObject()))
 			{
 				UE_LOG(LogTemp, Log, TEXT("[Test] ClassConfig is valid: Start = %f,  Location = %s"),
 				       ClassConfig->Start, *ClassConfig->Location.ToString());
 			}
+#endif
 		}
 		if (FProperty* ClassFloat = TestClass->FindPropertyByName(FName("TestFloat")))
 		{
