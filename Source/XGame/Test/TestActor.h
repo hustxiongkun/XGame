@@ -4,6 +4,21 @@
 #include "GameFramework/Actor.h"
 #include "TestActor.generated.h"
 
+#define TO_FLAG(Enum) (1 << static_cast<uint8>(Enum))
+
+UENUM(BlueprintType, meta = (Bitflags))
+enum class ETestType : uint8
+{
+	Rep,
+	Rpc,
+	EditConditon,
+	Component,
+	Size,
+	PackageId,
+	Property,
+	Pointer,
+};
+
 USTRUCT(BlueprintType)
 struct FTestConfig
 {
@@ -43,6 +58,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void TestComponent();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (Bitmask, BitmaskEnum = "ETestType"))
+	int32 TestType;
 
 	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(InlineEditConditionToggle))
 	bool TestBool;
