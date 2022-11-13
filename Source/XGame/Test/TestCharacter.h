@@ -1,10 +1,12 @@
-﻿#pragma once
+#pragma once
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "Abilities/GameplayAbility.h"
 #include "GameFramework/Character.h"
 #include "TestCharacter.generated.h"
+
+class UTestAttributeSet;
 
 UENUM(BlueprintType)
 enum class EAbilityInputId : uint8
@@ -147,6 +149,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Skill", meta = (DisplayName = "技能信息", AllowPrivateAccess = "true"))
 	TArray<FAbilityInfo> AbilityInfos;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Attribute", meta = (DisplayName = "属性集", AllowPrivateAccess = "true"))
+	UTestAttributeSet* TestAttributes = nullptr;
 	
 	int32 BindCount = 0;
 };

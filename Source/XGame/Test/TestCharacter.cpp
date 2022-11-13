@@ -1,6 +1,7 @@
-﻿#include "TestCharacter.h"
+#include "TestCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "TestAttributeSet.h"
 
 
 ATestCharacter::ATestCharacter()
@@ -8,6 +9,7 @@ ATestCharacter::ATestCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	AbilitySystemComp = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComp"));
+	TestAttributes = CreateDefaultSubobject<UTestAttributeSet>(TEXT("Attributes"));
 }
 
 void ATestCharacter::PossessedBy(AController* NewController)
