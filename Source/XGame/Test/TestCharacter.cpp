@@ -64,5 +64,10 @@ UAbilitySystemComponent* ATestCharacter::GetAbilitySystemComponent() const
 void ATestCharacter::TestBindAction()
 {
 	++BindCount;
-	UE_LOG(LogTemp, Log, TEXT("[ATestCharacter] Test : Bind action %d success"), BindCount);
+	TestArray.SetNum(6);
+	if(BindCount == 1)
+	{
+		TestArray[3] = 7;
+	}
+	UE_LOG(LogTemp, Log, TEXT("[ATestCharacter] Test : Bind action %d success; Array num = %d, %d"), BindCount, TestArray.Num(), TestArray[3]);
 }

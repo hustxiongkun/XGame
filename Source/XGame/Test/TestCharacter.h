@@ -154,4 +154,6 @@ private:
 	UTestAttributeSet* TestAttributes = nullptr;
 	
 	int32 BindCount = 0;
+	UPROPERTY(Transient)
+	TArray<int32> TestArray;
 };
