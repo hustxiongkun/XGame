@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{B80B98A7-4294-10A1-2B98-B48D20DCAC7A}",
+	"EngineAssociation": "{1A1C209B-4501-61D3-B122-BC8515DB1816}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -23,11 +23,6 @@
 			]
 		},
 		{
-			"Name": "ElectronicNodes",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/5cb2a394d0c04e73891762be4cbd7216"
-		},
-		{
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
 		},
@@ -41,6 +36,22 @@
 		},
 		{
 			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayStateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "StateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayBehaviorSmartObjects",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayInteractions",
 			"Enabled": true
 		}
 	]

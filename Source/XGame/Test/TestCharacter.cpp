@@ -47,7 +47,7 @@ void ATestCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 		AbilitySystemComp->InitAbilityActorInfo(this, this);
 		// 绑定输入到枚举(EAbilityInputId)的映射 ->(枚举映射)
 		AbilitySystemComp->BindAbilityActivationToInputComponent(PlayerInputComponent, FGameplayAbilityInputBinds(
-			FString() ,FString(), FString("EAbilityInputId")));
+			FString() ,FString(), FTopLevelAssetPath(TEXT("/Script/XGame"), TEXT("EAbilityInputId"))));
 	}
 
 	if(PlayerInputComponent)
