@@ -59,7 +59,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void TestComponent();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (Bitmask, BitmaskEnum = "ETestType"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (Bitmask, BitmaskEnum = "/Script/XGame.ETestType"))
 	int32 TestType;
 
 	UPROPERTY(EditAnywhere, Category = "TestEditCondition", meta=(InlineEditConditionToggle))
