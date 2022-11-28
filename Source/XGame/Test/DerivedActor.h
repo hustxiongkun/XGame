@@ -2,15 +2,15 @@
 
 #include "CoreMinimal.h"
 #include "TestActor.h"
-#include "DrivedActor.generated.h"
+#include "DerivedActor.generated.h"
 
 UCLASS()
-class XGAME_API ADrivedActor : public ATestActor
+class XGAME_API ADerivedActor : public ATestActor
 {
 	GENERATED_BODY()
 
 public:
-	ADrivedActor();
+	ADerivedActor();
 
 	// 子类不能使用UFUNCTION()进行标注 
 	virtual void TestBlueprintCallable() override;

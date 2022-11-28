@@ -11,7 +11,7 @@ enum class ETestType : uint8
 {
 	Rep,
 	Rpc,
-	EditConditon,
+	EditCondition,
 	Component,
 	Size,
 	PackageId,

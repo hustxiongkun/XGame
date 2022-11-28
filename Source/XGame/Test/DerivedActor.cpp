@@ -1,11 +1,11 @@
-﻿#include "DrivedActor.h"
+﻿#include "DerivedActor.h"
 
-ADrivedActor::ADrivedActor()
+ADerivedActor::ADerivedActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ADrivedActor::TestBlueprintCallable()
+void ADerivedActor::TestBlueprintCallable()
 {
 	Super::TestBlueprintCallable();
 	UE_LOG(LogTemp, Log, TEXT("[Test] ADrivedActor::TestBlueprintCallable"));
