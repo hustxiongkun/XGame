@@ -33,6 +33,8 @@
 
 .vs
 .vsconfig
+*.sln
+*.user
 .idea
 Binaries
 DerivedDataCache
